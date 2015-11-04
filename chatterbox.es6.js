@@ -4,13 +4,16 @@ Chatterbox = class Chatterbox {
 
     if (name) {
       this.name = name
+
     } else {
       throw new Error('Chatterbox must be initialized with a name.')
     }
   }
 
   listen (collection, params, callback){
-    check(params, {listenTo: String, listenFor: RegExp, chatAs: String})
+    check(params, {
+      listenTo: String, listenFor: RegExp, chatAs: String
+    })
     check(callback, Function)
 
     collection.after.insert((userId, doc) => {
